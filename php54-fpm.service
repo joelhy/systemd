@@ -1,0 +1,13 @@
+[Unit]
+Description=The PHP FastCGI Process Manager
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/php-fpm/php54-fpm.pid
+PrivateTmp=true
+ExecStart=/usr/local/php-5.4.39_fpm/sbin/php-fpm --pid /run/php-fpm/php54-fpm.pid
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
